@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  apache:
+    container_name: apache
+    image: httpd:alpine
+    restart: always
+    #ports:
+    # - "8880:80"
+    networks:
+      local:
+        ipv4_address: 10.6.0.6
+networks:
+  local:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.6.0.0/16
+          gateway: 10.6.0.1

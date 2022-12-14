@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  tomcat:
+    container_name: tomcat
+    image: tomcat:9.0
+    #ports:
+    # - "8888:8080"
+    command: /bin/bash -c "mv /usr/local/tomcat/webapps /usr/local/tomcat/webapps2; mv /usr/local/tomcat/webapps.dist /usr/local/tomcat/webapps; cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml; catalina.sh run"
+    volumes:
+      - ./tmp/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xm:ro
+      - ./tmp/context.xml:/tmp/context.xml:ro
+    networks:
+      local:
+        ipv4_address: 10.5.0.5
+networks:
+  local:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
