@@ -17,26 +17,11 @@ LIGHT_GRAY='\033[0;37m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
 
-cd apps/apache/certificado
 echo -e "${BROWN_ORANGE}Criando o certificado do apache...${NC}"
+cd apps/apache/certificado
 ./criar-certificado.sh -d apache.example.com -i 10.6.0.6 -s 123456
 cd ..
 cd ..
-cd tomcat/certificado
 echo -e "${BROWN_ORANGE}Criando a certificação do tomcat...${NC}"
+cd tomcat/certificado
 ./criar-certificado.sh -d tomcat.example.com -i 10.5.0.5 -s 123456
-cd ..
-echo -e "${BROWN_ORANGE}Subindo a aplicação do tomcat...${NC}"
-docker compose up -d &
-wait $!
-cd ..
-cd apache
-echo -e "${BROWN_ORANGE}Subindo a aplicação apache...${NC}"
-docker compose up -d &
-wait $!
-cd ..
-cd ..
-echo -e "${BROWN_ORANGE}Subindo o nginx...${NC}"
-docker compose up -d &
-wait $!
-echo -e "${BROWN_ORANGE}Fim!${NC}"

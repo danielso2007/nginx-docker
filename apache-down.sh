@@ -1,4 +1,5 @@
 #!/bin/bash
-cd apache
-docker-compose down
+cd apps/apache
+docker compose down
+cd ..
 cd ..

@@ -1,10 +1,11 @@
 #!/bin/bash
-docker-compose stop &
+docker compose stop &
 wait $!
-cd apache
-docker-compose stop &
+cd apps/apache
+docker compose stop &
 wait $!
 cd ..
 cd tomcat
-docker-compose stop
+docker compose stop
+cd ..
 cd ..

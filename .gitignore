@@ -1,0 +1,13 @@
+*.log
+*.env
+*.jks
+keystore.jks
+*.pem
+*.der
+*.crt
+*.key
+*.pfx
+*.csr
+*.srl
+example1.crt
+example1.key

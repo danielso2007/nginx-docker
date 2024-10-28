@@ -1,4 +1,5 @@
 #!/bin/bash
-cd tomcat
-docker-compose up -d
+cd apps/tomcat
+docker compose up -d
+cd ..
 cd ..
